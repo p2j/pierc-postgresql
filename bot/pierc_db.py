@@ -24,14 +24,14 @@ class Pierc_DB:
 		"""
 			CREATE TABLE IF NOT EXISTS main
 			(
-				id      INT(12) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				id      INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				channel VARCHAR(16),
 				name    VARCHAR(16),
 				time    DATETIME,
 				message TEXT,
 				type    VARCHAR(10),
 				hidden  CHAR(1)
-			) engine = InnoDB;
+			);
 
 			""")
 

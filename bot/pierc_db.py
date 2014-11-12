@@ -20,28 +20,17 @@ class Pierc_DB:
 			return
 
 	def create_table(self):
-		self.cursor.execute(
-		"""
-			CREATE TABLE IF NOT EXISTS main
-			(
-				id      INTEGER NOT NULL PRIMARY KEY,
-				channel VARCHAR(16),
-				name    VARCHAR(16),
-				time    TIMESTAMP,
-				message TEXT,
-				type    VARCHAR(10),
-				hidden  CHAR(1)
-			);
-
-			""")
+		sql = "CREATE TABLE IF NOT EXISTS main (%s);"
+		data = "id serial PRIMARY KEY, channel VARCHAR(16), name VARCHAR(16), time TIMESTAMP, message TEXT, type VARCHAR(10), hidden CHAR(1)"
+		self.cursor.execute(sql, data)
 
 	def insert_line(self, channel, name, time, message, msgtype, hidden = "F"):
 
 		"""
 		Sample line: "sfucsss, danly, 12:33-09/11/2009, I love hats, normal, 0"
 		"""
-		sql = "INSERT INTO main (channel, name, time, message, type, hidden) VALUES (%s);"
-		data = (channel, name, time, message, msgtype, hidden, )
+		sql = "INSERT INTO main (channel, name, time, message, type, hidden) VALUES (%s, %s, %s, %s, %s, %s);"
+		data = (channel, name, time, message, msgtype, hidden )
 
 		self.cursor.execute(sql, data)
 

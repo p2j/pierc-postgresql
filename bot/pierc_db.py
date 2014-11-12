@@ -27,7 +27,7 @@ class Pierc_DB:
 				id      INTEGER NOT NULL PRIMARY KEY,
 				channel VARCHAR(16),
 				name    VARCHAR(16),
-				time    DATETIME,
+				time    TIMESTAMP,
 				message TEXT,
 				type    VARCHAR(10),
 				hidden  CHAR(1)

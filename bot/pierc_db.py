@@ -20,7 +20,10 @@ class Pierc_DB:
 			return
 
 	def create_table(self):
-		self.cursor.execute("CREATE TABLE IF NOT EXISTS main (id serial PRIMARY KEY, channel VARCHAR(16), name VARCHAR(16), time TIMESTAMP, message TEXT, type VARCHAR(10), hidden CHAR(1));")
+		try:
+			self.cursor.execute("CREATE TABLE IF NOT EXISTS main (id serial PRIMARY KEY, channel VARCHAR(16), name VARCHAR(16), time TIMESTAMP, message TEXT, type VARCHAR(10), hidden CHAR(1));")
+		except:
+			print "something went wrong"
 
 	def insert_line(self, channel, name, time, message, msgtype, hidden = "F"):
 

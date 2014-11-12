@@ -24,7 +24,7 @@ class Pierc_DB:
 		"""
 			CREATE TABLE IF NOT EXISTS main
 			(
-				id      INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				id      INTEGER NOT NULL PRIMARY KEY,
 				channel VARCHAR(16),
 				name    VARCHAR(16),
 				time    DATETIME,

@@ -21,8 +21,8 @@ class Pierc_DB:
 
 	def create_table(self):
 		sql = "CREATE TABLE IF NOT EXISTS main (id serial PRIMARY KEY, channel VARCHAR(16), name VARCHAR(16), time TIMESTAMP, message TEXT, type VARCHAR(10), hidden CHAR(1));"
-		
-		self.cursor.execute(sql, data)
+
+		self.cursor.execute(sql)
 
 	def insert_line(self, channel, name, time, message, msgtype, hidden = "F"):
 

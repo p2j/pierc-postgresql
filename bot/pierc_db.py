@@ -41,12 +41,12 @@ class Pierc_DB:
 		Sample line: "sfucsss, danly, 12:33-09/11/2009, I love hats, normal, 0"
 		"""
 		query =	"INSERT INTO main (channel, name, time, message, type, hidden) VALUES" + \
-		"(\""+self.conn.escape_string(channel)+ "\"," + \
-		"\""+self.conn.escape_string(name)+"\"," + \
+		"(\""+self.conn.string(channel)+ "\"," + \
+		"\""+self.conn.string(name)+"\"," + \
 		"\""+time+"\"," + \
-		"\""+self.conn.escape_string(message)+"\"," + \
-		"\""+self.conn.escape_string(msgtype)+"\"," + \
-		"\""+self.conn.escape_string(hidden)+"\")"
+		"\""+self.conn.string(message)+"\"," + \
+		"\""+self.conn.string(msgtype)+"\"," + \
+		"\""+self.conn.string(hidden)+"\")"
 
 		self.cursor.execute(query)
 

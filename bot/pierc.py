@@ -39,7 +39,7 @@ class Logger(irclib.SimpleIRCClient):
 		self.ssl = ssl
 		self.ipv6 = ipv6
 
-		#MySQL details
+		#PostgreSQL details
 		self.postgresql_server = postgresql_server
 		self.postgresql_port = postgresql_port
 		self.postgresql_database = postgresql_database
@@ -168,7 +168,7 @@ class Logger(irclib.SimpleIRCClient):
 				return
 
 def main():
-	mysql_settings = config.config("postgresql_config.txt")
+	postgresql_settings = config.config("postgresql_config.txt")
 	irc_settings = config.config("irc_config.txt")
 	c = Logger(
 				irc_settings["server"],
@@ -187,7 +187,7 @@ def main():
 				int(postgresql_settings["port"]),
 				postgresql_settings["database"],
 				postgresql_settings["user"],
-				postgresql_settings["password"] ) 
+				postgresql_settings["password"] )
 	c.start()
 
 if __name__ == "__main__":

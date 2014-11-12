@@ -2,7 +2,7 @@
 
 class config
 {
-	static $dbms_host = 		"mysql.sample.net";
+	static $dbms_host = 		"postgresql.sample.net";
 	static $dbms_port = 		"";
 	static $dbms_database = 	"pierc";
 	static $dbms_user = 		"pierc_user";
@@ -19,7 +19,7 @@ class config
 	{
 		return new pierc_db( config::$dbms_host, config::$dbms_port, config::$dbms_database, config::$dbms_user, config::$dbms_pass, config::$timezone );
 	}
-	
+
 	static function get_theme($a) {
 		if (!isset(config::$theme) || config::$theme == "") {
 			echo "theme/standard/".$a;

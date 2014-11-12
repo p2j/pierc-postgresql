@@ -1,23 +1,23 @@
-import MySQLdb
+import psycopg2
 import config
 import datetime
 
 class Pierc_DB:
-	
-	def __init__(self, server, port, database, user, password):
-		self.conn = MySQLdb.connect ( host = server,
-						port = port, 
-						user = user,
-						passwd = password,
-						db = database )
+
+	def __init__(self, server, portnum, db, username, pw):
+		self.conn = psycopg2.connect ( host = server,
+						port = portnum,
+						user = username,
+						password = pw,
+						database = db )
 		self.cursor = self.conn.cursor()
-			
+
 
 	def __del__(self):
 		try:
 			self.conn.close()
-		except: 
-			return        
+		except:
+			return
 
 	def create_table(self):
 		self.cursor.execute(
@@ -32,7 +32,7 @@ class Pierc_DB:
 				type    VARCHAR(10),
 				hidden  CHAR(1)
 			) engine = InnoDB;
-			
+
 			""")
 
 	def insert_line(self, channel, name, time, message, msgtype, hidden = "F"):
@@ -49,19 +49,15 @@ class Pierc_DB:
 		"\""+self.conn.escape_string(hidden)+"\")"
 
 		self.cursor.execute(query)
-		
+
 	def commit(self):
 		self.conn.commit()
 
 if __name__ == "__main__":
-	mysql_config = config.config("mysql_config.txt")
-	db = Pierc_DB( mysql_config["server"],
-						int(mysql_config["port"]),
-						mysql_config["database"], 
-						mysql_config["user"],
-						mysql_config["password"])
+	postgresql_config = config.config("postgresql_config.txt")
+	db = Pierc_DB( postgresql_config["server"],
+						int(postgresql_config["port"]),
+						postgresql_config["database"],
+						postgresql_config["user"],
+						postgresql_config["password"])
 	db.create_table()
-        
-        
-        
-    

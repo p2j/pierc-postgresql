@@ -40,15 +40,10 @@ class Pierc_DB:
 		"""
 		Sample line: "sfucsss, danly, 12:33-09/11/2009, I love hats, normal, 0"
 		"""
-		query =	"INSERT INTO main (channel, name, time, message, type, hidden) VALUES" + \
-		"(\""+self.conn.string(channel)+ "\"," + \
-		"\""+self.conn.string(name)+"\"," + \
-		"\""+time+"\"," + \
-		"\""+self.conn.string(message)+"\"," + \
-		"\""+self.conn.string(msgtype)+"\"," + \
-		"\""+self.conn.string(hidden)+"\")"
+		sql = "INSERT INTO main (channel, name, time, message, type, hidden) VALUES (%s);"
+		data = (channel, name, time, message, msgtype, hidden, )
 
-		self.cursor.execute(query)
+		self.cursor.execute(sql, data)
 
 	def commit(self):
 		self.conn.commit()

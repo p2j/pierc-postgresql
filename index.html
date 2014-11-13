@@ -100,7 +100,10 @@
 <h3>
 <a id="4-installing-the-irc-bot-into-systemd" class="anchor" href="#4-installing-the-irc-bot-into-systemd" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. Installing the IRC Bot into systemd</h3>
 
-<p>If you use Linux that is based on systemd, the included IRCbot.service and init_script.sh files can be used to set up the bot to run as a service. This means that it can be configured to run on system startup, automatically restarted if the bot quits, and managed using systemctl. </p>
+<p>If you use Linux that is based on systemd, the included IRCbot.service and init_script.sh files can be used to set up the bot to run as a service. This means that it can be configured to run on system startup, automatically restarted if the bot quits, and managed using systemctl. First, you need to allow the init_script.sh to be executed</p>
+
+<pre><code>$ chmod +x init_script.sh
+</code></pre>
 
 <p>To allow for this, you need to copy the .service file into /usr/lib/systemd/system/ (as root or using sudo)</p>
 

@@ -20,35 +20,18 @@ class Pierc_DB:
 			return
 
 	def create_table(self):
-		self.cursor.execute(
-		"""
-			CREATE TABLE IF NOT EXISTS main
-			(
-				id      INT(12) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-				channel VARCHAR(16),
-				name    VARCHAR(16),
-				time    DATETIME,
-				message TEXT,
-				type    VARCHAR(10),
-				hidden  CHAR(1)
-			) engine = InnoDB;
-
-			""")
-
+		self.cursor.execute("CREATE TABLE IF NOT EXISTS main (id SERIAL PRIMARY KEY, channel VARCHAR(16), name VARCHAR(16), time TIMESTAMP, message TEXT, type VARCHAR(10), hidden CHAR(1));")
+		db.commit()
+		
 	def insert_line(self, channel, name, time, message, msgtype, hidden = "F"):
 
 		"""
 		Sample line: "sfucsss, danly, 12:33-09/11/2009, I love hats, normal, 0"
 		"""
-		query =	"INSERT INTO main (channel, name, time, message, type, hidden) VALUES" + \
-		"(\""+self.conn.escape_string(channel)+ "\"," + \
-		"\""+self.conn.escape_string(name)+"\"," + \
-		"\""+time+"\"," + \
-		"\""+self.conn.escape_string(message)+"\"," + \
-		"\""+self.conn.escape_string(msgtype)+"\"," + \
-		"\""+self.conn.escape_string(hidden)+"\")"
+		sql = "INSERT INTO main (channel, name, time, message, type, hidden) VALUES (%s, %s, %s, %s, %s, %s);"
+		data = (channel, name, time, message, msgtype, hidden)
 
-		self.cursor.execute(query)
+		self.cursor.execute(sql, data)
 
 	def commit(self):
 		self.conn.commit()

@@ -3,7 +3,7 @@ Pierc-postgresql is a python bot that logs IRC channels, and a PHP/JS interface 
 
 This project was forked from Curtis Lassam's pierc and adapted to work with a postgresql database backend.
 
-Installation instructions can be found at http://classam.github.com/pierc/ .
+Installation instructions can be found at http://p2j.github.io/pierc-postgresql/ .
 Installation instructions for python-psycopg2 can be found at http://initd.org/psycopg/docs/install.html .
 
 It depends on python-psycopg2, which is ~LGPL, and Joel Rosdahl's IRC Bot library,

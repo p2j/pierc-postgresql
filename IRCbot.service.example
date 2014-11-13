@@ -3,7 +3,7 @@ Description=IRC Logging Bot
 After=network.target
 
 [Service]
-WorkingDirectory=/path/to/service/dir
+WorkingDirectory=/path/to/service/dir/
 User=service_user
 Group=service_user_group
 Type=forking

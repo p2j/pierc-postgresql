@@ -9,7 +9,6 @@ Group=service_user_group
 Type=forking
 ExecStart=/path/to/service/dir/init_script.sh start
 ExecStop=/path/to/service/dir/init_script.sh stop
-PIDFile=/path/to/service/dir/IRCbot.pid
 RestartSec=30
 Restart=always
 

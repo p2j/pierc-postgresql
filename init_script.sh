@@ -21,6 +21,7 @@ case "$1" in
         fi
         echo "Starting the IRCbot"
         python ./bot/pierc.py
+        touch IRCbot.pid
     ;;
     stop)
         echo "Stopping the IRCbot..."
@@ -35,6 +36,7 @@ case "$1" in
                 fi
                 c=$(($c+1))
             done
+            rm IRCbot.pid
         fi
     ;;
     restart)
@@ -50,6 +52,7 @@ case "$1" in
                 fi
                 c=$(($c+1))
             done
+            rm IRCbot.pid
         fi
         if [ -e IRCbot.pid ]; then
             if ( kill -0 $(cat IRCbot.pid) 2> /dev/null ); then
@@ -65,6 +68,7 @@ case "$1" in
         fi
         echo "Starting the IRCbot"
         python ./bot/pierc.py
+        touch IRCbot.pid
     ;;
     status)
         if [ -e IRCbot.pid ]; then

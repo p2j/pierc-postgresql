@@ -13,7 +13,7 @@ class config
 	static $default_channel =	"logbot_test";
 	static $default_number_of_lines = 50;
 
-	static $timezone = 		"America/Vancouver";
+	static $timezone = 		"US/Chicago";
 
 	static function get_db()
 	{

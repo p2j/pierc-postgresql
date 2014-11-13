@@ -14,7 +14,7 @@ class db_class
 		// Verify that we received a proper time zone, otherwise fall back to default
 		$allZones = DateTimeZone::listIdentifiers();
 		if(!in_array($timezone, $allZones)) {
-			$timezone = "US/Chicago";
+			$timezone = "America/Chicago";
 		}
 		$this->timezone = new DateTimeZone($timezone);
 	}

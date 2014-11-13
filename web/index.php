@@ -17,11 +17,11 @@ $channels = $pdb->get_channels() ;
 <head>
 	<title>IRC Archive</title>
 	<link rel="stylesheet" href="<?php config::get_theme("style.css") ?>" type="text/css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0;">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"> </script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"> </script>
 	<script type="text/javascript" src="pierc.js"> </script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0;">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 </head>
 <body>
@@ -69,9 +69,9 @@ $channels = $pdb->get_channels() ;
 	<h3>Next Steps:</h3>
 	<ul>
 		<li> If you're not the maintainer of this site, please report it to... that guy. Boy is <em>he</em> in trouble. </li>
-		<li> Did you follow the <a href="http://classam.github.com/pierc/">installation steps</a> properly? </li>
+		<li> Did you follow the <a href="http://p2j.github.io/pierc-postgresql/">installation steps</a> properly? </li>
 		<li> You're a smart guy (or girl). You have access to the source code. Figure it out. </li>
-		<li> If you find a problem with the code (almost certain), please report it <a href='https://github.com/classam/pierc/issues'>here</a>. </li>
+		<li> If you find a problem with the code (almost certain), please report it <a href='https://github.com/p2j/pierc-postgresql/issues'>here</a>. </li>
 		<li> This error isn't going away until you restart the page. </li>
 	</ul>
 </div>
@@ -85,7 +85,7 @@ $channels = $pdb->get_channels() ;
 </div>
 
 <div id="footer">
-	Powered by <a href="http://classam.github.com/pierc/">Pierc</a>
+	Powered by <a href="http://p2j.github.io/pierc-postgresql/">Pierc-postgresql</a>
 </div>
 
 </body>

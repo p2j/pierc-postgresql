@@ -3,7 +3,7 @@
 class config
 {
 	static $dbms_host = 		"postgresql.sample.net";
-	static $dbms_port = 		"";
+	static $dbms_port = 		"5432";
 	static $dbms_database = 	"pierc";
 	static $dbms_user = 		"pierc_user";
 	static $dbms_pass = 		"pierc_pass";

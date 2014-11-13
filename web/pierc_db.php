@@ -7,10 +7,9 @@ class db_class
 
 	public function __construct( $server, $port, $database, $user, $password, $timezone)
 	{
-		if ($port) { $port = ":".$port; }
 		$this->_conn = pg_connect("host=$server port=$port dbname=$database user=$user password=$password");
 		if (!$this->_conn){ die ("Could not connect: " + pg_last_error() ); }
-		
+
 
 		// Verify that we received a proper time zone, otherwise fall back to default
 		$allZones = DateTimeZone::listIdentifiers();

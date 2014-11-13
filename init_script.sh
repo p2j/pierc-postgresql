@@ -9,14 +9,14 @@ cd bot
 
 case "$1" in
     start)
-        python pierc.py
+        python pierc.py > /dev/null &
     ;;
     stop)
         pkill -f "python pierc.py"
     ;;
     restart)
         pkill -f "python pierc.py"
-        python pierc.py
+        python pierc.py > /dev/null &
     ;;
     *)
         echo "Usage: ${0} {start|stop|restart}"

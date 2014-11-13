@@ -56,7 +56,7 @@ class pierc_db extends db_class
 			SELECT id, channel, name, time, message, type, hidden FROM main WHERE channel = '$channel' ORDER BY id DESC LIMIT $n;";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		return array_reverse($this->hashinate($results));
@@ -71,7 +71,7 @@ class pierc_db extends db_class
 			SELECT id, channel, name, time, message, type, hidden FROM main WHERE channel = '$channel' AND id < $id ORDER BY id DESC LIMIT $n;";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		return $this->hashinate($results);
@@ -86,7 +86,7 @@ class pierc_db extends db_class
 			SELECT id, channel, name, time, message, type, hidden FROM main WHERE channel = '$channel' AND id > $id ORDER BY time ASC, id DESC LIMIT $n;";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		return $this->hashinate($results);
@@ -100,7 +100,7 @@ class pierc_db extends db_class
 			SELECT id, channel, name, time, message, type, hidden FROM main WHERE channel = '$channel' AND id > $id ORDER BY id DESC LIMIT 500";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		return array_reverse($this->hashinate($results));
@@ -117,7 +117,7 @@ class pierc_db extends db_class
 				AND id < $id;";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		$res = $this->hashinate($results);
@@ -158,7 +158,7 @@ class pierc_db extends db_class
 				";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		while ($row = pg_fetch_assoc($results)) {
@@ -185,7 +185,7 @@ class pierc_db extends db_class
 				";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		return array_reverse($this->hashinate($results));
@@ -213,7 +213,7 @@ class pierc_db extends db_class
 			$searchquery true ORDER BY id DESC LIMIT $n OFFSET $offset;";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		$results = array_reverse($this->hashinate($results));
@@ -232,7 +232,7 @@ class pierc_db extends db_class
 			WHERE message LIKE '".$tag.":%' ORDER BY id DESC LIMIT $n;";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		return array_reverse($this->hashinate($results));
@@ -249,7 +249,7 @@ class pierc_db extends db_class
 			WHERE name = '".$user."' ORDER BY id DESC LIMIT 1;";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		return $this->hashinate($results);
@@ -267,7 +267,7 @@ class pierc_db extends db_class
 			WHERE name = '".$user."' ORDER BY id DESC LIMIT ".$n.";";
 
 		$results = pg_query( $this->_conn, $query );
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		return $this->hashinate($results);
@@ -278,7 +278,7 @@ class pierc_db extends db_class
 		$query = " SELECT DISTINCT name FROM main; ";
 		$results = pg_query( $this->_conn, $query );
 
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		$lines = $this->hashinate($results);
@@ -292,10 +292,10 @@ class pierc_db extends db_class
 
 	public function get_channels()
 	{
-		$query = " SELECT DISTINCT channel FROM main WHERE type <> \"nick\" AND channel <> \"undefined\";";
+		$query = " SELECT DISTINCT channel FROM main WHERE type <> \"name\" AND channel <> \"undefined\";";
 		$results = pg_query( $this->_conn, $query );
 
-		if (!$results){ print pg_error(); return false; }
+		if (!$results){ print pg_last_error(); return false; }
 		if( pg_num_rows($results) == 0 ) { return false; }
 
 		$lines = $this->hashinate($results);

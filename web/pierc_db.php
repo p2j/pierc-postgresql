@@ -292,7 +292,10 @@ class pierc_db extends db_class
 
 	public function get_channels()
 	{
-		$query = " SELECT DISTINCT channel FROM main WHERE type <> \"name\";"; #" AND channel <> \"undefined\";";
+		$str1 = pg_escape_string("name");
+		$str2 = pg_escape_string("undefined");
+		$query = " SELECT DISTINCT channel FROM main WHERE type <> '{$str1}' AND channel <> '{$str2}';";
+		#$query = " SELECT DISTINCT channel FROM main WHERE type <> \"name\";"; #" AND channel <> \"undefined\";";
 		$results = pg_query( $this->_conn, $query );
 
 		if (!$results){ print pg_last_error(); return false; }
